@@ -50,7 +50,7 @@ architecture bhv of CPU is
 		next_OprA_Addr, next_OprB_Addr, next_WB_Addr, next_OprC_Addr, Execute_addr: in std_logic_vector(2 downto 0);
 		next_PC, WB_Data_next, Extra_Operand_next, Execute_out, WB_PC: in std_logic_vector(15 downto 0);
 		clk, end_proc_in, WB_en_next, next_Complement_OprB, Use_Extra_next, Mult_next, Pause_RF: in std_logic;
-		Operand_A, Operand_B, Extra_Opr, PC_out: out std_logic_vector(15 downto 0);
+		Operand_A, Operand_B, Extra_Opr, PC_out, Port2: out std_logic_vector(15 downto 0);
 		OprC_addr: out std_logic_vector(2 downto 0);
 		Ins_type_out: out std_logic_vector(3 downto 0);
 		end_proc_out: out std_logic
@@ -103,7 +103,7 @@ begin
 		Execute_out => Exec_DataOut, WB_PC => WB_PC, clk => clk, end_proc_in => end_proc_Dec,
 		WB_en_next => WB_en, next_Complement_OprB => Comp_B, Use_Extra_next => Use_Extra,
 		Mult_next => Mult, Pause_RF => Pause_RF, Operand_A => OprA, Operand_B => OprB,
-		Extra_Opr => Extra_Opr_RF, PC_out => RF_PC, OprC_addr => RF_Write_Addr_RF,
+		Extra_Opr => Extra_Opr_RF, PC_out => RF_PC, Port2 => Port2, OprC_addr => RF_Write_Addr_RF,
 		Ins_type_out => Ins_type_RF, end_proc_out => end_proc_RF
 	);
 
