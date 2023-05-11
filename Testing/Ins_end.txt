@@ -1,0 +1,17 @@
+		elsif(rising_edge(clk) and (Pause_IF = '0' or Branch_ID = '1' or Branch_Exec = '1')) then
+			PC <= next_PC;
+		end if;
+	end process;
+
+	Inc_instance: PC_Inc port map(
+		PC => PC , Output => Inc_PC
+	);
+
+	next_PC <=	Branch_Addr_Exec when Branch_Exec = '1' else
+				Branch_Addr_ID when Branch_ID = '1' else
+				Inc_PC;
+
+	Inst_out <= Instruction_memory(to_integer(unsigned(PC(6 downto 1))));
+	Inst_address <= PC;
+	Inc_Address <= Inc_PC;
+end bhv;
