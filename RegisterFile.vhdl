@@ -11,9 +11,9 @@ entity RegisterFile is
 	port(
 		next_Ins_type: in std_logic_vector(3 downto 0);
 		next_OprA_Addr, next_OprB_Addr, next_WB_Addr, next_OprC_Addr, Execute_addr: in std_logic_vector(2 downto 0);
-		next_PC, WB_Data_next, Extra_Operand_next, Execute_out: in std_logic_vector(15 downto 0);
+		next_PC, WB_Data_next, Extra_Operand_next, Execute_out, WB_PC: in std_logic_vector(15 downto 0);
 		clk, end_proc_in, WB_en_next, next_Complement_OprB, Use_Extra_next, Mult_next, Pause_RF: in std_logic;
-		Operand_A, Operand_B, Extra_Opr: out std_logic_vector(15 downto 0);
+		Operand_A, Operand_B, Extra_Opr, PC_out, Port2: out std_logic_vector(15 downto 0);
 		OprC_addr: out std_logic_vector(2 downto 0);
 		Ins_type_out: out std_logic_vector(3 downto 0);
 		end_proc_out: out std_logic
@@ -22,8 +22,8 @@ end entity;
 
 architecture behave of RegisterFile is
 
-	type RF is array(1 to 7) of std_logic_vector(15 downto 0);
-	signal registers: RF;
+	type RF is array(0 to 7) of std_logic_vector(15 downto 0);
+	signal registers: RF:= (others => "0000000000000000");
 	signal OprA_Addr, OprB_Addr: std_logic_vector(2 downto 0);
 	signal Ins_type: std_logic_vector(3 downto 0);
 	signal OprA, OprB, Extra_Operand, PC, temp_reg: std_logic_vector(15 downto 0);
@@ -90,12 +90,17 @@ begin
 				Extra_Operand;
 
 	Ins_type_out <= Ins_type;
+	Port2 <= registers(0);
 
 	--Write Back Stage
 	process(clk)
 	begin
 		if(rising_edge(clk) and WB_en_next='1' and (next_WB_Addr /= "000")) then
 			registers(to_integer(unsigned(next_WB_Addr))) <= WB_Data_next;
+		end if;
+
+		if(rising_edge(clk)) then
+			registers(0) <= WB_PC;
 		end if;
 	end process;
 end behave;

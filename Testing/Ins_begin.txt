@@ -16,11 +16,11 @@ architecture bhv of Inst_Mem is
 
 	type mem is array(63 downto 0) of std_logic_vector(15 downto 0);
 	signal Instruction_memory: mem := (others => "0000000000000000");
-	signal PC, Inc_PC, next_PC: std_logic_vector(15 downto 0);
+	signal PC, Inc_PC, next_PC, Inc_input, Inc_output, Pc_Inst, Inc_Inst: std_logic_vector(15 downto 0);
 
-	component PC_Inc is
+	component Increment is
 	port(
-		PC: in std_logic_vector(15 downto 0);
+		Input: in std_logic_vector(15 downto 0);
 		Output: out std_logic_vector(15 downto 0)
 	);
 	end component;

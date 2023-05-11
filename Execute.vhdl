@@ -9,8 +9,8 @@ entity Execute_stage is
 		rst, clk, Load_Branch, end_proc_in: in std_logic;
 		next_Ins_type: in std_logic_vector(3 downto 0);
 		next_Reg_addr_in: in std_logic_vector(2 downto 0);
-		next_Opr_A, next_Opr_B, next_Extra_Opr, Mem_out: in std_logic_vector(15 downto 0);
-		Data_out, Branch_PC, Mem_Addr: out std_logic_vector(15 downto 0);
+		next_Opr_A, next_Opr_B, next_Extra_Opr, Mem_out, PC_in: in std_logic_vector(15 downto 0);
+		Data_out, Branch_PC, Mem_Addr, PC_out: out std_logic_vector(15 downto 0);
 		Reg_addr_out, Reg_addr_Forward: out std_logic_vector (2 downto 0);
 		mem_store_en_out, RF_Write_en_out, Branch_out, end_proc_out: out std_logic
 	);
@@ -62,6 +62,7 @@ begin
 			Extra_Opr <= next_Extra_Opr;
 			out_reg_addr <= next_Reg_addr_in;
 			end_proc_out <= end_proc_in;
+			PC_out <= PC_in;
 		end if;
 
 		if(rising_edge(clk) and Ins_type(3) = '0' and Write_condition = '1') then

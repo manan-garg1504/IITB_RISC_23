@@ -32,21 +32,21 @@ ModelSim-Altera Info: # vmap work rtl_work
 ModelSim-Altera Info: # Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 ModelSim-Altera Info: # Modifying modelsim.ini
 ModelSim-Altera Info: # 
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/ALU.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/ALU.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/ALU.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:24 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/ALU.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity ALU
 ModelSim-Altera Info: # -- Compiling architecture arch of ALU
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:24 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/RegisterFile.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/RegisterFile.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/RegisterFile.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:24 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/RegisterFile.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
@@ -54,23 +54,23 @@ ModelSim-Altera Info: # -- Loading package NUMERIC_STD
 ModelSim-Altera Info: # -- Loading package std_logic_textio
 ModelSim-Altera Info: # -- Compiling entity RegisterFile
 ModelSim-Altera Info: # -- Compiling architecture behave of RegisterFile
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:24 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Branch_Calc.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Branch_Calc.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Branch_Calc.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:24 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Branch_Calc.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity Branch_Calc
 ModelSim-Altera Info: # -- Compiling architecture arch of Branch_Calc
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:24 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Data_mem.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Data_mem.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Data_mem.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:24 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Data_mem.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
@@ -78,56 +78,56 @@ ModelSim-Altera Info: # -- Loading package NUMERIC_STD
 ModelSim-Altera Info: # -- Loading package std_logic_textio
 ModelSim-Altera Info: # -- Compiling entity Data_Mem
 ModelSim-Altera Info: # -- Compiling architecture bhv of Data_Mem
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:24 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Decode_Mult.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Decode_Mult.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Decode_Mult.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:24 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Decode_Mult.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity Dec_Mult
 ModelSim-Altera Info: # -- Compiling architecture arch of Dec_Mult
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:01
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/CPU.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/CPU.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/CPU.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/CPU.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity CPU
 ModelSim-Altera Info: # -- Compiling architecture bhv of CPU
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Execute.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Execute.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Execute.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Execute.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity Execute_stage
 ModelSim-Altera Info: # -- Compiling architecture bhv of Execute_stage
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Inc_PC.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Incrementer.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Inc_PC.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Incrementer.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
-ModelSim-Altera Info: # -- Compiling entity PC_Inc
-ModelSim-Altera Info: # -- Compiling architecture arch of PC_Inc
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # -- Compiling entity Increment
+ModelSim-Altera Info: # -- Compiling architecture arch of Increment
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Inst_mem.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Inst_mem.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Inst_mem.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Inst_mem.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
@@ -135,36 +135,36 @@ ModelSim-Altera Info: # -- Loading package NUMERIC_STD
 ModelSim-Altera Info: # -- Loading package std_logic_textio
 ModelSim-Altera Info: # -- Compiling entity Inst_Mem
 ModelSim-Altera Info: # -- Compiling architecture bhv of Inst_Mem
-ModelSim-Altera Info: # End time: 13:38:50 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/Instruction_Decoder.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/Instruction_Decoder.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:50 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/Instruction_Decoder.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/Instruction_Decoder.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Compiling entity Ins_decode
 ModelSim-Altera Info: # -- Compiling architecture arch of Ins_decode
-ModelSim-Altera Info: # End time: 13:38:51 on May 04,2023, Elapsed time: 0:00:01
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
 ModelSim-Altera Info: # 
-ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE337/TestBench.vhdl}
+ModelSim-Altera Info: # vcom -93 -work work {E:/Code/EE309_Working/TestBench.vhdl}
 ModelSim-Altera Info: # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-ModelSim-Altera Info: # Start time: 13:38:51 on May 04,2023
-ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE337/TestBench.vhdl 
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
+ModelSim-Altera Info: # vcom -93 -work work E:/Code/EE309_Working/TestBench.vhdl 
 ModelSim-Altera Info: # -- Loading package STANDARD
 ModelSim-Altera Info: # -- Loading package TEXTIO
 ModelSim-Altera Info: # -- Loading package std_logic_1164
 ModelSim-Altera Info: # -- Loading package NUMERIC_STD
 ModelSim-Altera Info: # -- Compiling entity TestBench
 ModelSim-Altera Info: # -- Compiling architecture bhv of TestBench
-ModelSim-Altera Info: # End time: 13:38:51 on May 04,2023, Elapsed time: 0:00:00
+ModelSim-Altera Info: # End time: 23:40:25 on May 11,2023, Elapsed time: 0:00:00
 ModelSim-Altera Info: # Errors: 0, Warnings: 0
 ModelSim-Altera Info: # 
 ModelSim-Altera Info: # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  TestBench
 ModelSim-Altera Info: # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" TestBench 
-ModelSim-Altera Info: # Start time: 13:38:51 on May 04,2023
+ModelSim-Altera Info: # Start time: 23:40:25 on May 11,2023
 ModelSim-Altera Info: # Loading std.standard
 ModelSim-Altera Info: # Loading std.textio(body)
 ModelSim-Altera Info: # Loading ieee.std_logic_1164(body)
@@ -173,7 +173,7 @@ ModelSim-Altera Info: # Loading work.testbench(bhv)
 ModelSim-Altera Info: # Loading work.cpu(bhv)
 ModelSim-Altera Info: # Loading ieee.std_logic_textio(body)
 ModelSim-Altera Info: # Loading work.inst_mem(bhv)
-ModelSim-Altera Info: # Loading work.pc_inc(arch)
+ModelSim-Altera Info: # Loading work.increment(arch)
 ModelSim-Altera Info: # Loading work.ins_decode(arch)
 ModelSim-Altera Info: # Loading work.dec_mult(arch)
 ModelSim-Altera Info: # Loading work.branch_calc(arch)
@@ -181,6 +181,10 @@ ModelSim-Altera Info: # Loading work.registerfile(behave)
 ModelSim-Altera Info: # Loading work.execute_stage(bhv)
 ModelSim-Altera Info: # Loading work.alu(arch)
 ModelSim-Altera Info: # Loading work.data_mem(bhv)
+ModelSim-Altera Warning: # ** Warning: (vsim-8683) Uninitialized out port /testbench/dut_instance/RF/PC_out(15 downto 0) has no driver.
+ModelSim-Altera Info: # This port will contribute value (UUUUUUUUUUUUUUUU) to the signal network.
+ModelSim-Altera Warning: # ** Warning: (vsim-8683) Uninitialized out port /testbench/dut_instance/Port2(15 downto 0) has no driver.
+ModelSim-Altera Info: # This port will contribute value (UUUUUUUUUUUUUUUU) to the signal network.
 ModelSim-Altera Info: # 
 ModelSim-Altera Info: #add wave *
 ModelSim-Altera Info: #view structure
@@ -189,10 +193,28 @@ ModelSim-Altera Info: # run 5 us
 ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 ModelSim-Altera Info: #    Time: 0 ps  Iteration: 0  Instance: /testbench/dut_instance/Data
 ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 0 ps  Iteration: 0  Instance: /testbench/dut_instance/Data
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 0 ps  Iteration: 0  Instance: /testbench/dut_instance/Instructions
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 ModelSim-Altera Info: #    Time: 0 ps  Iteration: 0  Instance: /testbench/dut_instance/Instructions
 ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 ModelSim-Altera Info: #    Time: 0 ps  Iteration: 1  Instance: /testbench/dut_instance/Instructions
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 0 ps  Iteration: 1  Instance: /testbench/dut_instance/Instructions
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 125 ns  Iteration: 4  Instance: /testbench/dut_instance/Instructions
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 325 ns  Iteration: 3  Instance: /testbench/dut_instance/Data
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 325 ns  Iteration: 4  Instance: /testbench/dut_instance/Data
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 325 ns  Iteration: 5  Instance: /testbench/dut_instance/Data
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 325 ns  Iteration: 6  Instance: /testbench/dut_instance/Data
+ModelSim-Altera Warning: # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ModelSim-Altera Info: #    Time: 325 ns  Iteration: 7  Instance: /testbench/dut_instance/Data
 ModelSim-Altera Info: # quit -f
-ModelSim-Altera Info: # End time: 13:38:51 on May 04,2023, Elapsed time: 0:00:00
-ModelSim-Altera Info: # Errors: 0, Warnings: 3
+ModelSim-Altera Info: # End time: 23:40:26 on May 11,2023, Elapsed time: 0:00:01
+ModelSim-Altera Info: # Errors: 0, Warnings: 14
 Info: NativeLink simulation flow was successful

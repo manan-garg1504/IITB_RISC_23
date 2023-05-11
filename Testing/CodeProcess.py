@@ -3,7 +3,6 @@ import numpy as np
 
 def to_bin(n, len):
 	ans = ""
-#	print(n)
 	if(n < 0):
 		N = 1
 		for j in range(len):
@@ -15,7 +14,6 @@ def to_bin(n, len):
 		ans = ('1' if (n%2) else '0') + ans
 		n //= 2
 
-#	print(ans)
 	return ans
 
 def Input_and_Store(Instructions):
@@ -151,11 +149,11 @@ if(out != "ADC"):
 	sys.exit(1)
 
 Curr_Ins = 0
-registers = np.zeros(8, dtype = np.int16)
-Data_mem = np.zeros(64, dtype = np.int16)
+registers = np.zeros(8, dtype = np.uint32)
+Data_mem = np.zeros(128, dtype = np.uint16)
 
 #Dirty bits for Data Mem
-Data_mem_mod = np.zeros(64, dtype = bool)
+Data_mem_mod = np.zeros(128, dtype = bool)
 
 C = 0
 Z = 0
@@ -170,225 +168,209 @@ while(Instructions[Curr_Ins][0] != "END"):
 
 	if (opcode == "ADA"):
 		registers[Ins[3]] = registers[Ins[2]] + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = registers[Ins[2]]
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ADC" and C == 1):
 		registers[Ins[3]] = registers[Ins[2]] + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = registers[Ins[2]]
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ADZ" and Z == 1):
 		registers[Ins[3]] = registers[Ins[2]] + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = registers[Ins[2]]
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "AWC"):
 		registers[Ins[3]] = registers[Ins[2]] + registers[Ins[1]] + C
-		res = registers[Ins[3]]
-		Opr1 = registers[Ins[2]]
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ACA"):
-		registers[Ins[3]] = (~registers[Ins[2]]) + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = (~registers[Ins[2]])
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+		registers[Ins[3]] = ((~registers[Ins[2]]) & ((1<<16) - 1)) + registers[Ins[1]]
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ACC" and C == 1):
-		registers[Ins[3]] = (~registers[Ins[2]]) + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = (~registers[Ins[2]])
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+		registers[Ins[3]] = ((~registers[Ins[2]]) & ((1<<16) - 1)) + registers[Ins[1]]
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ACZ" and Z == 1):
-		registers[Ins[3]] = (~registers[Ins[2]]) + registers[Ins[1]]
-		res = registers[Ins[3]]
-		Opr1 = (~registers[Ins[2]])
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+		registers[Ins[3]] = ((~registers[Ins[2]]) & ((1<<16) - 1)) + registers[Ins[1]]
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "ACW"):
-		registers[Ins[3]] = (~registers[Ins[2]]) + registers[Ins[1]] + C
-		res = registers[Ins[3]]
-		Opr1 = (~registers[Ins[2]])
-		Opr2 = registers[Ins[1]]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[3]] == 0):
-			Z = 1
+		registers[Ins[3]] = ((~registers[Ins[2]]) & ((1<<16) - 1)) + registers[Ins[1]] + C
+
+		if(registers[Ins[3]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[3]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 	
 	if (opcode == "ADI"):
 		registers[Ins[2]] = registers[Ins[1]] + Ins[3]
-		res = registers[Ins[3]]
-		Opr1 = registers[Ins[2]]
-		Opr2 = Ins[3]
-		
-		C = 1 if((Opr1 > 0 and Opr2 > 0 and res < 0) or (Opr1 < 0 and Opr2 < 0) or (((Opr1 <0) ^ (Opr2 <0)) and res>0)) else 0
-		if(registers[Ins[2]] == 0):
-			Z = 1
+
+		if(registers[Ins[2]] > (1 << 16) - 1):
+			C = 1
+			registers[Ins[2]] -= (1 << 16)
 		else:
-			Z = 0
-		if(Ins[2] == 0):
-			FLAG = 1
+			C = 0
+
+		Z = 1 if(registers[Ins[2]] == 0) else 0
+		FLAG = 1 if(Ins[2] == 0) else FLAG
 
 	if (opcode == "NDU"):
-		registers[Ins[3]] = ~(registers[Ins[2]] & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~(registers[Ins[2]] & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "NDC" and C == 1):
-		registers[Ins[3]] = ~(registers[Ins[2]] & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~(registers[Ins[2]] & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "NDZ" and Z == 1):
-		registers[Ins[3]] = ~(registers[Ins[2]] & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~(registers[Ins[2]] & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "NCU"):
-		registers[Ins[3]] = ~((~registers[Ins[2]]) & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~((~registers[Ins[2]]) & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "NCC" and C == 1):
-		registers[Ins[3]] = ~((~registers[Ins[2]]) & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~((~registers[Ins[2]]) & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if (opcode == "NCZ" and Z == 1):
-		registers[Ins[3]] = ~((~registers[Ins[2]]) & registers[Ins[1]])
-		if(registers[Ins[3]] == 0):
-			Z = 1
-		else:
-			Z = 0
-		if(Ins[3] == 0):
-			FLAG = 1
+		registers[Ins[3]] = (~((~registers[Ins[2]]) & registers[Ins[1]])) & ((1<<16) - 1)
+
+		Z = 1 if(registers[Ins[3]] == 0) else 0
+		FLAG = 1 if(Ins[3] == 0) else FLAG
 
 	if(opcode == "LLI"):
 		Ins[2] = Ins[2] & ((1 << 9) - 1)
 		registers[Ins[1]] = Ins[2]
 		if(Ins[1] == 0):
 			FLAG = 1
-	
+
 	if(opcode == "LW"):
-		address = ((registers[Ins[2]] + Ins[3])//2) & ((1<<6) - 1)
+		address = ((registers[Ins[2]] + Ins[3])) & ((1<<7) - 1)
+
+		registers[Ins[1]] = (Data_mem[address])*(1<<8)
+		address += 1
+		address %= 128
 		registers[Ins[1]] = Data_mem[address]
+
 		if(Ins[1] == 0):
 			FLAG = 1
 
 	if(opcode == "SW"):
-		address = ((registers[Ins[2]] + Ins[3])//2) & ((1<<6) - 1)
-		Data_mem[address] = registers[Ins[1]]
+		address = ((registers[Ins[2]] + Ins[3])) & ((1<<7) - 1)
+		Data_mem[address] = registers[Ins[1]]/(1<<8)
+		Data_mem_mod[address] = True
+		address += 1
+		address %= 128
+
+		Data_mem[address] = registers[Ins[1]] & ((1<<8) - 1) 
 		Data_mem_mod[address] = True
 
 	if(opcode == "LM"):
-		address = (registers[Ins[1]]//2) & ((1<<6) - 1)
+		address = (registers[Ins[1]]) & ((1<<7) - 1)
 		for i in range(8):
 			if(Ins[2][7-i] == '1'):
-				registers[7-i] = Data_mem[address]
+				registers[7-i] = (Data_mem[address])*(1<<8)
 				address += 1
-				address %= 64
+				address %= 128
+
+				registers[7-i] += Data_mem[address]
+				address += 1
+				address %= 128
 		FLAG = 1 if(Ins[2][0] == '1') else 0
 
 	if(opcode == "SM"):
-		address = (registers[Ins[1]]//2) & ((1<<6) - 1)
-		
+		address = (registers[Ins[1]]) & ((1<<7) - 1)
 		for i in range(8):
 			if(Ins[2][7-i] == '1'):
-				Data_mem[address] = registers[7-i]
+				Data_mem[address] = registers[7-i]/(1<<8)
+				Data_mem_mod[address] = True
+
+				address += 1
+				address %= 128
+
+				Data_mem[address] = registers[7-i] & ((1<<8) - 1)
 				Data_mem_mod[address] = True
 				address += 1
-				address %= 64
+				address %= 128
 	
 	if(opcode == "BEQ"):
 		if(registers[Ins[1]] == registers[Ins[2]]):
 			FLAG = 1
-			registers[0] += Ins[3]*2
-	
+			registers[0] += (Ins[3]*2)
+			registers[0] = registers[0] & ((1<<16) - 1)
+
 	if(opcode == "BLT"):
 		if(registers[Ins[1]] < registers[Ins[2]]):
 			FLAG = 1
@@ -398,19 +380,25 @@ while(Instructions[Curr_Ins][0] != "END"):
 		if(registers[Ins[1]] <= registers[Ins[2]]):
 			FLAG = 1
 			registers[0] += Ins[3]*2
+			registers[0] = registers[0] & ((1<<16) - 1)
 
 	if(opcode == "JAL"):
 		registers[Ins[1]] = 2*Curr_Ins + 2
+		registers[Ins[1]] = registers[0] & ((1<<16) - 1)
 		registers[0] += Ins[2]*2
+		registers[0] = registers[0] & ((1<<16) - 1)
 		FLAG = 1
 
 	if(opcode == "JLR"):
 		registers[0] = registers[Ins[2]]
+		registers[0] = registers[0] & ((1<<16) - 1)
 		registers[Ins[1]] = 2*Curr_Ins + 2
+		registers[Ins[1]] = registers[0] & ((1<<16) - 1)
 		FLAG = 1
 
 	if(opcode == "JRI"):
 		registers[0] = registers[Ins[1]] + Ins[2]*2
+		registers[0] = registers[0] & ((1<<16) - 1)
 		FLAG = 1
 
 	if(opcode == 'E'):
@@ -418,14 +406,19 @@ while(Instructions[Curr_Ins][0] != "END"):
 
 	if(FLAG == 0):
 		registers[0] += 2
+		registers[0] = registers[0] & ((1<<16) - 1)
 
 	Curr_Ins = (registers[0]//2) & ((1<<6) - 1)
 
 TestFiles = open("Expected_out.txt", 'w')
 for i in range(64):
-	if(Data_mem_mod[i] == False):
-		TestFiles.write("----------------\n")
+	if(Data_mem_mod[2*i] == False):
+		TestFiles.write("--------")
 	else:
-		TestFiles.write(to_bin(Data_mem[i], 16) + '\n')
+		TestFiles.write(to_bin(Data_mem[2*i], 8))
+	if(Data_mem_mod[2*i + 1] == False):
+		TestFiles.write("--------\n")
+	else:
+		TestFiles.write(to_bin(Data_mem[2*i+1], 8) + '\n')
 
 TestFiles.close()
