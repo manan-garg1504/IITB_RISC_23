@@ -39,6 +39,7 @@ begin
 			OprC_Addr <= next_OprC_Addr;
 			Extra_Operand <= Extra_Operand_next;
 			PC <= next_PC;
+			PC_out <= PC;
 			Use_Extra <= Use_Extra_next;
 			Ins_type <= next_Ins_type;
 			Complement_OprB <= next_Complement_OprB;

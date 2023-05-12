@@ -5,7 +5,8 @@ use ieee.std_logic_1164.all;
 
 entity CPU is
 	port(rst, clk : in std_logic;
-		 Port1, Port2 : out std_logic_vector(15 downto 0));
+		 Port1, Port2 : out std_logic_vector(15 downto 0);
+		 C, Z: out std_logic);
 end entity CPU;
 
 architecture bhv of CPU is
@@ -22,7 +23,7 @@ architecture bhv of CPU is
 	signal Exec_DataOut, DataMemAddr, WB_Data: std_logic_vector(15 downto 0);
 	signal RF_write_en_Exec, WB_en, Pause_IF, Pause_RF, Load_Branch: std_logic;
 
-	signal Branch_Exec, Branch_ID, Mult: std_logic;
+	signal Branch_Exec, Branch_ID, Mult, C_Exec, Z_Exec: std_logic;
 	signal end_proc_Dec, end_proc_RF, end_proc_Exec: std_logic;
 	-- components declaration
 	component Inst_Mem is
@@ -65,18 +66,18 @@ architecture bhv of CPU is
 		next_Opr_A, next_Opr_B, next_Extra_Opr, Mem_out, PC_in: in std_logic_vector(15 downto 0);
 		Data_out, Branch_PC, Mem_Addr, PC_out: out std_logic_vector(15 downto 0);
 		Reg_addr_out, Reg_addr_Forward: out std_logic_vector (2 downto 0);
-		mem_store_en_out, RF_Write_en_out, Branch_out, end_proc_out: out std_logic
+		mem_store_en_out, RF_Write_en_out, Branch_out, end_proc_out, Cout, Zout: out std_logic
 	);
 	end component;
 
 	component Data_Mem is 
 	port(
-		clk, Next_mem_store_en, Next_RF_store_en, end_proc: in std_logic; 
+		clk, Next_mem_store_en, Next_RF_store_en, end_proc, Cin, Zin: in std_logic; 
 		Next_Addr_in, Next_Data_in, PC_in: in std_logic_vector(15 downto 0);
 		Next_Reg_addr: in std_logic_vector(2 downto 0);
 		RF_Data_out, WB_PC, Port1: out std_logic_vector(15 downto 0);
 		Reg_addr_out: out std_logic_vector (2 downto 0);
-		RF_store_en, Load_Branch: out std_logic
+		RF_store_en, Load_Branch, Cout, Zout: out std_logic
 	); 
 	end component;
 begin
@@ -114,13 +115,15 @@ begin
 		Mem_out => WB_Data, PC_in => RF_PC, Data_out => Exec_DataOut, Branch_PC => Branch_Addr_Exec,
 		Mem_Addr => DataMemAddr, PC_out => Exec_PC, Reg_addr_out => RF_Write_Addr_to_Mem,
 		Reg_addr_Forward => RF_Write_Addr_Exec, mem_store_en_out => mem_store_en,
-		RF_Write_en_out => RF_write_en_Exec, Branch_out => Branch_Exec, end_proc_out=> end_proc_Exec
+		RF_Write_en_out => RF_write_en_Exec, Branch_out => Branch_Exec,
+		end_proc_out=> end_proc_Exec, Cout => C_Exec, Zout => Z_Exec
 	);
 
 	Data: Data_Mem port map(
 		clk => clk, Next_mem_store_en => mem_store_en, Next_RF_store_en => RF_write_en_Exec,
-		end_proc => end_proc_Exec, Next_Addr_in => DataMemAddr, Next_Data_in => Exec_DataOut,
+		end_proc => end_proc_Exec, Cin => C_Exec, Zin => Z_Exec, Next_Addr_in => DataMemAddr, Next_Data_in => Exec_DataOut,
 		PC_in => Exec_PC, Next_Reg_addr => RF_Write_Addr_to_Mem, WB_PC => WB_PC, Port1 => Port1,
-		RF_Data_out => WB_Data, Reg_addr_out => WB_addr, RF_store_en => WB_en, Load_Branch => Load_Branch
-	); 
+		RF_Data_out => WB_Data, Reg_addr_out => WB_addr, RF_store_en => WB_en,
+		Load_Branch => Load_Branch, Cout => C, Zout => Z
+	);
 end bhv;

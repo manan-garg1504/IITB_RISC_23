@@ -6,12 +6,12 @@ use ieee.std_logic_textio.all;
 
 entity Data_Mem is
 	port(
-		clk, Next_mem_store_en, Next_RF_store_en, end_proc: in std_logic; 
+		clk, Next_mem_store_en, Next_RF_store_en, end_proc, Cin, Zin: in std_logic; 
 		Next_Addr_in, Next_Data_in, PC_in: in std_logic_vector(15 downto 0);
 		Next_Reg_addr: in std_logic_vector(2 downto 0);
 		RF_Data_out, WB_PC, Port1: out std_logic_vector(15 downto 0);
 		Reg_addr_out: out std_logic_vector (2 downto 0);
-		RF_store_en, Load_Branch: out std_logic
+		RF_store_en, Load_Branch, Cout, Zout: out std_logic
 	); 
 end entity Data_Mem;
 
@@ -20,7 +20,7 @@ architecture bhv of Data_Mem is
 	type mem_arr is array(127 downto 0) of std_logic_vector(7 downto 0);
 	signal Reg_addr: std_logic_vector (2 downto 0);
 	signal memory_data: mem_arr;
-	signal mem_en, RF_en: std_logic;
+	signal mem_en, RF_en, C, Z: std_logic;
 	signal end_done, end_proc_use: std_logic:= '0';
 	signal Data_in, mem_data_out, Mem_adr, Data_out, Inc_Mem_Adr: std_logic_vector(15 downto 0);
 
@@ -54,6 +54,10 @@ begin
 			Mem_adr <= Next_Addr_in;
 			mem_en <= Next_mem_store_en;
 			end_proc_use <= end_proc;
+			Cout <= C;
+			C <= Cin;
+			Zout <= Z;
+			Z <= Zin;
 
 			WB_PC <= PC_in;
 			RF_en <= Next_RF_store_en;

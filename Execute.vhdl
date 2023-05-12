@@ -12,7 +12,7 @@ entity Execute_stage is
 		next_Opr_A, next_Opr_B, next_Extra_Opr, Mem_out, PC_in: in std_logic_vector(15 downto 0);
 		Data_out, Branch_PC, Mem_Addr, PC_out: out std_logic_vector(15 downto 0);
 		Reg_addr_out, Reg_addr_Forward: out std_logic_vector (2 downto 0);
-		mem_store_en_out, RF_Write_en_out, Branch_out, end_proc_out: out std_logic
+		mem_store_en_out, RF_Write_en_out, Branch_out, end_proc_out, Cout, Zout: out std_logic
 	);
 end entity Execute_stage;
 
@@ -138,4 +138,7 @@ begin
 	Reg_addr_Forward(0) <= Write_result and out_reg_addr(0);
 	Reg_addr_Forward(1) <= Write_result and out_reg_addr(1);
 	Reg_addr_Forward(2) <= Write_result and out_reg_addr(2);
+
+	Cout <= C;
+	Zout <= Z;
 end bhv;

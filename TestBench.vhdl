@@ -8,7 +8,8 @@ end entity TestBench;
 architecture bhv of TestBench is
 	component CPU is
 		port (rst, clk: in std_logic;
-				Port1, Port2: out std_logic_vector(15 downto 0));
+			Port1, Port2: out std_logic_vector(15 downto 0);
+			C, Z: out std_logic);
 	end component CPU;
 
 signal clk_50: std_logic:= '0';
