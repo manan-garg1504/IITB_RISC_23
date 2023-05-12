@@ -34,26 +34,7 @@ begin
 		variable Instruct: std_logic_vector(15 downto 0);
 	begin
 		if(rst = '1') then
-			Instruction_memory(0) <= "0011111111111100";
-			Instruction_memory(1) <= "0011110000000111";
-			Instruction_memory(2) <= "0011101001110001";
-			Instruction_memory(3) <= "0011100110110010";
-			Instruction_memory(4) <= "0011011000010110";
-			Instruction_memory(5) <= "0011010000010110";
-			Instruction_memory(6) <= "0011001000000000";
-			Instruction_memory(7) <= "0111001011111111";
-			Instruction_memory(8) <= "0001100101110010";
-			Instruction_memory(9) <= "0010001010011000";
-			Instruction_memory(10) <= "0010010010100000";
-			Instruction_memory(11) <= "0001011100101000";
-			Instruction_memory(12) <= "0001110110110111";
-			Instruction_memory(13) <= "0010110110110001";
-			Instruction_memory(14) <= "0000001001010010";
-			Instruction_memory(15) <= "0111001011111111";
-			Instruction_memory(16) <= "0110001001111000";
-			Instruction_memory(17) <= "0000001001010010";
-			Instruction_memory(18) <= "0111001011111111";
-			Instruction_memory(19) <= "1110000000000000";
+			Instruction_memory(0) <= "1110000000000000";
 		elsif(rising_edge(clk) and (Pause_IF = '0' or Branch_ID = '1' or Branch_Exec = '1')) then
 			PC <= next_PC;
 		end if;
